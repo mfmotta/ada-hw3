@@ -11,12 +11,24 @@
 # II - The Data
 
  We consider the available data from the ICIJ database on the [_Panama papers_](https://offshoreleaks.icij.org/pages/database) and the _Swiss Leaks_ Github [repository](https://github.com/swissleaks/swiss_leaks_data). (Check if these are note the same, but in different formats. I think they are. See link in the repo).
- The database is powered by the graph database [Neo4j](https://neo4j.com/). The data model used by ICIJ is explained [here](https://neo4j.com/blog/analyzing-panama-papers-neo4j/). In this models, one recognizes 4 types of entities:
+ The database is powered by the graph database [Neo4j](https://neo4j.com/). The graph database has a perfect fit to the type of data at hand, as it reveals the network in a natural way, applying an organization scheme similar to the human mind .The data model used by ICIJ is explained [here](https://neo4j.com/blog/analyzing-panama-papers-neo4j/). In this models, one recognizes 4 types of entities:
  
  * Clients 
  * Companies
  * Addresses
  * Officers ( which can be either a person or a company) 
+ 
+with relationships as (using Cypher, the language used in Neo4j):
+
+ * (: Officer)-[:is officer of]->(:Company)
+  
+  with the classifications:
+  * protector
+  * beneficiary, shareholder, director
+  * beneficiary
+  * shareholder
+  
+ * ()
  
  
 
