@@ -20,7 +20,7 @@
  
 with relationships as (using Cypher, the language used in Neo4j):
 
- * (: Officer)-[:is officer of]->(:Company)
+ * (:Officer)-[:is officer of]->(:Company)
   
   with the classifications:
   * protector
@@ -28,9 +28,14 @@ with relationships as (using Cypher, the language used in Neo4j):
   * beneficiary
   * shareholder
   
- * ()
+ * (:Officer)-[:registered address]->(:Address)
+ * (:Client)-[:registered]->(:Company)
+ * (:Officer)-[:has simialr name or address]->(:Address)
+  
  
- 
+## Issues with the data
+
+ The ICIJ data contains a lot of duplicates, but only a small part of which is connected by a "has a similar name or address" relatioship. Another issue is that the shareholder information is stored with the 
 
  We devide the project into two parts. A core part, which should be more feasible and should address essencial aspects of the network reveald by the leaks. A secondary part, which might be less straightforward to achieve, it is contingent on what we find along the way.
 
